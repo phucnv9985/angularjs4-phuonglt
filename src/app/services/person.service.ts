@@ -9,7 +9,7 @@ export class Personservice {
   constructor(private http: Http) {
   }
 
-  url = "http://localhost:8080/api/person/";
+  url = "http://10.225.3.91:8080/api/person/";
   getperson(): Observable<person[]> {
     return this.http.get(this.url)
       .map((res: Response) => res.json())

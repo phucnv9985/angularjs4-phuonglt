@@ -13,8 +13,9 @@ export class NewprojectComponent implements OnInit {
 
   projects;
   newproject;
+  selectedDate;
   constructor(private projectser: Projectservice,private router: Router) {
-
+    this.selectedDate = null;
   }
 
   ngOnInit() {

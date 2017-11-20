@@ -20,6 +20,7 @@ export class RegisterroleComponent implements OnInit {
   personproject;
   checkisupdate = false;
   checkisexcist = false;
+  checktime = false;
   constructor(private personproservice: Personprojectservice,private personservice: Personservice, private proservice: Projectservice) {
     this.personprojects = personproservice.getAll();
     this.persons = personservice.getperson();
@@ -46,15 +47,27 @@ export class RegisterroleComponent implements OnInit {
         })
       });
   }
+
+  Checktime(){
+    this.checktime = false;
+    if(this.personproject.startDate > this.personproject.endDate){
+      this.checktime = true;
+      alert("Start date and end date is invalid");
+    }
+  }
+
+
   update(p){
     this.checkisexcist = false;
     this.personproject = p;
     this.checkisupdate = true;
+    this.checktime = false;
   }
   add(){
     this.checkisexcist = true;
     this.checkisupdate = false;
     this.personproject = new personproject({idPersonal:null,idProjectRole:null},"",null,null);
+    this.checktime = false;
   }
 
   create(){

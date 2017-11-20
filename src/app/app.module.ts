@@ -19,6 +19,10 @@ import { HeaderComponent } from './header/header.component';
 import { RegisterroleComponent } from './registerrole/registerrole.component';
 import { ProjectpersonComponent } from './projectperson/projectperson.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { LoadingModule } from 'ngx-loading';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LoginComponent } from './login/login.component';
+import { GuardsComponent } from './-guards/-guards.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +34,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
     PersonprojectComponent,
     HeaderComponent,
     RegisterroleComponent,
-    ProjectpersonComponent
+    ProjectpersonComponent,
+    LoginComponent,
+    GuardsComponent
   ],
   imports: [
     FormsModule,
@@ -38,8 +44,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
     appRoutes,
     HttpModule,
     HttpClientModule,
-    NgxPaginationModule
-
+    NgxPaginationModule,
+    LoadingModule,
+    BrowserAnimationsModule
   ],
   providers: [Personservice,Projectservice,Personprojectservice,UploadFileService],
   bootstrap: [AppComponent]

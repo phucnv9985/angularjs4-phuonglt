@@ -4,11 +4,38 @@ import { person } from "../models/person";
 import { Observable } from 'rxjs/Rx';
 import { UploadFileService } from '../services/upload-file.service';
 import { HttpClient, HttpResponse, HttpEventType } from '@angular/common/http';
+import { LoadingModule } from 'ngx-loading';
+import { fadeInAnimation } from '../fade.animation';
+import { keyframes, query, stagger } from '@angular/animations';
+
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition
+} from '@angular/animations';
 
 @Component({
   selector: 'app-person',
   templateUrl: './person.component.html',
-  styleUrls: ['./person.component.css']
+  styleUrls: ['./person.component.css'],
+  animations: [
+    trigger('explainerAnim', [
+      transition('* => *', [
+        query('.col', style({ opacity: 0, transform: 'translateY(-40px)' }), { optional: true }),
+
+        query('.col', stagger('500ms', [
+          animate('500ms 1.0s ease-out', style({ opacity: 1, transform: 'translateY(0)' })),
+        ]), { optional: true }),
+
+        query('.col', [
+          animate(50, style('*'))
+        ], { optional: true })
+
+      ])
+    ])
+  ]
 })
 
 export class PersonComponent implements OnInit {
@@ -39,11 +66,11 @@ export class PersonComponent implements OnInit {
     this.newperson = null;
   }
 
-  findbyname(){
+  findbyname() {
     console.log(this.name);
-    if(this.name != ""){
+    if (this.name != "") {
       this.persons = this.perservice.findpersonbyname(this.name);
-    }else{
+    } else {
       this.persons = this.perservice.getperson();
     }
   }
@@ -132,7 +159,7 @@ export class PersonComponent implements OnInit {
 
   deleteselected() {
     if (this.personselectedarray.length != 0) {
-      if (confirm("Are you sure you want delete all selected person !")){
+      if (confirm("Are you sure you want delete all selected person !")) {
         console.log(this.personselectedarray);
         this.perservice.deletepresonbyids(this.personselectedarray).subscribe(
           data => {
@@ -146,10 +173,10 @@ export class PersonComponent implements OnInit {
           }
         );
         this.personselectedarray = [];
-      }else{
+      } else {
 
       }
-    }else{
+    } else {
       alert("Please select persons you want to delete!");
     }
   }

@@ -9,7 +9,7 @@ export class Personprojectservice {
    constructor(private http: Http) {
    }
 
-   url = "http://localhost:8080/api/personproject/";
+   url = "http://10.225.3.91:8080/api/personproject/";
   createprojectrole(personproject) {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });

@@ -53,4 +53,20 @@ export class PersonprojectComponent implements OnInit {
 
   }
 
+  delete(project){
+    if (confirm("Are you sure you want to delete " + project.phuongProjectRole.name + "?")) {
+      this.personproject.delete(project).subscribe(
+        data => {
+          // refresh the list
+          this.projectroles = this.perservice.projectByPersonID(this.id);
+          return false;
+        },
+        error => {
+          console.error("Error deleting !");
+          return Observable.throw(error);
+        }
+      );
+    }
+  }
+
 }

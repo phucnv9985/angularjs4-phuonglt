@@ -1,7 +1,7 @@
-<div class="box box-success">
+<div @explainerAnim class="box box-success">
   <div class="box-header">
     <div class="col-sm-4">
-      <h1>Person
+      <h1 class="col">Person
         <a routerLink="newperson" class="btn btn-sm btn-success">
           <span class="glyphicon glyphicon-plus-sign"> New</span>
         </a>
@@ -12,7 +12,7 @@
     </div>
     <div class="col-sm-4 hidden-xs"></div>
     <div class="col-sm-4">
-      <div class="pull-right">
+      <div class="pull-right" class="col">
         <div class="input-group input-group-sm">
           <input type="text" [(ngModel)]="name" class="form-control" (ngModelChange)="findbyname()">
           <span class="input-group-btn">
@@ -27,7 +27,7 @@
   <div class="box-body">
 
     <div class="table-responsive">
-      <table class="table table-hover table-striped table-bordered table-center" id="bang1">
+      <table class="col table table-hover table-striped table-bordered table-center">
         <tr>
           <th style="width: 20px;">
             STT
@@ -68,7 +68,7 @@
             <input type="checkbox" (change)="checkperson($event,person.id)" [checked]="isPersonSelected(person.id)">
           </td>
           <td>
-            <img *ngIf="person.image" style="width: 50px;" src="http://localhost:8080/files/{{person.image}}" />
+            <img *ngIf="person.image" style="width: 50px;" src="http://10.225.3.91:8080/files/{{person.image}}" />
           </td>
           <td>
             {{person.id}}
@@ -110,9 +110,9 @@
           </td>
         </tr>
       </table>
-      <pagination-controls (pageChange)="p = $event"></pagination-controls>
-    </div>
 
+    </div>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
     <div *ngIf="check" id="myModal" class="modal fade" role="dialog">
       <div class="modal-dialog">
 

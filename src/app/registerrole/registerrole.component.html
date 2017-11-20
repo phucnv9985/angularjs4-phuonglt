@@ -117,19 +117,19 @@
             <div class="col-sm-6">
               <label for="name">Start Date</label>
               <input type="date" name="startdate" (input)="personproject.startDate = ($event.target.value)" [value]="personproject.startDate | date:'yyyy-MM-dd'"
-                class="form-control">
+                class="form-control" (change)="Checktime()">
             </div>
             <div class="col-sm-6">
               <label for="name">End Date</label>
               <input type="date" (input)="personproject.endDate = ($event.target.value)" [value]="personproject.endDate | date:'yyyy-MM-dd'"
-                class="form-control">
+                class="form-control" (change)="Checktime()">
             </div>
           </div>
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-        <button type="button" [disabled]="!register.form.valid || checkisexcist" class="btn btn-primary" (click)="create()">Save</button>
+        <button type="button" [disabled]="!register.form.valid || checkisexcist || checktime" class="btn btn-primary" (click)="create()">Save</button>
       </div>
     </div>
     <!-- /.modal-content -->

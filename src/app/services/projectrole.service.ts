@@ -10,7 +10,7 @@ export class Projectservice {
    constructor(private http: Http) {
    }
 
-   url = "http://localhost:8080/api/projectrole/";
+   url = "http://10.225.3.91:8080/api/projectrole/";
 
    getprojectrole(): Observable<projectrole[]> {
     return this.http.get(this.url)

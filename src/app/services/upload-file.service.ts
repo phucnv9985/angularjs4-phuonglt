@@ -12,7 +12,7 @@ export class UploadFileService {
 
     formdata.append('file', file);
 
-    const req = new HttpRequest('POST', 'http://localhost:8080/post', formdata, {
+    const req = new HttpRequest('POST', 'http://10.225.3.91:8080/post', formdata, {
       reportProgress: true,
       responseType: 'text'
     });
@@ -20,7 +20,5 @@ export class UploadFileService {
     return this.http.request(req);
   }
 
-  getFiles(): Observable<string[]> {
-    return this.http.get('http://localhost:8080/getallfiles');
-  }
+  
 }

@@ -7,6 +7,7 @@ import { PersonprojectComponent } from '../app/personproject/personproject.compo
 import { HeaderComponent } from '../app/header/header.component';
 import { RegisterroleComponent } from '../app/registerrole/registerrole.component';
 import { ProjectpersonComponent } from '../app/projectperson/projectperson.component';
+import { Component, HostBinding } from '@angular/core';
 
 const routing: Routes = [
   { path: '', component: HeaderComponent },
@@ -19,4 +20,6 @@ const routing: Routes = [
   { path: 'registerrole', component: RegisterroleComponent }
 ]
 export const appRoutes = RouterModule.forRoot(routing);
+
+//export const appRoutes: ModuleWithProviders = RouterModule.forRoot(routing);
 
